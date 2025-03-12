@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Ordering App</title>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <!-- Font Awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <!-- Google fonts link -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Icon link -->
+    <link rel="icon" href="assets/img/logo1.png" type="png">
+
+  </head>
+  <body>
+    <header>
+      <img src="assets/img/logo1.png" alt="A pile of books" type="png" aria-label="Book image">
+      <h1 class="title">Book Ordering App</h1>
+    </header>
+    <main>
+      <div class="input-container">
+        <i class="fa-solid fa-magnifying-glass" style="color: #ffffff"></i>
+        <input
+          type="text"
+          name="text"
+          class="search-bar"
+          id="search-bar"
+          placeholder="Find item here..."
+          aria-label="Search books"
+        />
+      </div>
+      <div class="selection-bar">
+        <select
+          name="category"
+          id="category-filtering"
+          class="category-filtering"
+          aria-label="Filter by category"
+        >
+          <option value="all">All categories</option>
+          <option value="fiction">Fiction</option>
+          <option value="non-fiction">Non-Fiction</option>
+          <option value="history">History</option>
+          <option value="education">Education</option>
+          <option value="biography">Biography</option>
+        </select>
+        <button id="cart-btn" type="button" class="cart-btn">
+          <i class="fa-sharp fa-solid fa-cart-shopping"></i>
+        </button>
+      </div>
+      <div class="book-sections">
+        <section id="all-categories" data-category="all">
+          <h2>All categories</h2>
+          <div class="products-container"></div>
+        </section>
+      </div>
+      <aside id="cart-container">
+        <button class="btn" id="clear-cart-btn">Clear Cart</button>
+        <div id="products-container"></div>
+        <p>Total number of items: <span id="total-items">0</span></p>
+        <p>Subtotal: <span id="subtotal">$0</span></p>
+        <p>Taxes: <span id="taxes">$0</span></p>
+        <p>Total: <span id="total">$0</span></p>
+      </aside>
+    </main>
+    <script src="assets/js/script.js"></script>
+  </body>
+</html>
