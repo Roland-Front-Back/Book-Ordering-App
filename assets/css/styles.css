@@ -39,7 +39,6 @@ header {
 header > img {
   width: 60px;
   height: 50px;
-  background: none;
 }
 
 .title {
@@ -127,8 +126,17 @@ select,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
+select::after,
+select:active,
+select:hover {
+  background-color: var(--cream);
+  color: var(--blueText);
+}
+
 .cart-btn::after,
-.cart-btn:active {
+.cart-btn:active,
+.cart-btn:hover {
+  background-color: var(--cream);
   transform: translateY(1px);
 }
 
@@ -218,8 +226,15 @@ section > h2 {
 
 .payment-btn {
   margin-left: 80px;
-  background-color: var(--lightRed)!important;
-  color: var(--cream)!important;
+  background-color: var(--lightRed) !important;
+  color: var(--cream) !important;
+}
+
+.payment-btn::after,
+.payment-btn:active,
+.payment-btn:hover {
+  background-color: var(--cream) !important;
+  color: var(--blueText) !important;
 }
 
 .aside-text-btn > button {
@@ -232,6 +247,12 @@ section > h2 {
   background-color: var(--lightYellow);
   font-size: 0.7rem;
   color: var(--blueText);
+}
+
+.aside-text-btn > button::after,
+.aside-text-btn > button:active,
+.aside-text-btn > button:hover {
+  background-color: var(--cream);
 }
 
 .aside-cart-text {
@@ -252,7 +273,7 @@ section > h2 {
   width: 80px;
   height: 30px;
   border-radius: 3px;
-  border: 1px groove gray;
+  border: none;
   position: absolute;
   transform: translate(-150px, 328px);
   font-family: var(--inter);
@@ -260,6 +281,14 @@ section > h2 {
   font-size: 0.7rem;
   color: var(--cream);
   background-color: var(--lightRed);
+}
+
+.check-out-btn::after,
+.check-out-btn:active,
+.check-out-btn:hover {
+  background-color: var(--cream);
+  color: var(--blueText);
+  border: 2px solid gray;
 }
 
 .coupon-div-popup {
