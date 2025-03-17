@@ -1,8 +1,15 @@
 :root {
   /* Colors */
+  --lightBlue: #5adbff;
+  --blue: #0466c8;
+  --blueText: #1d3557;
+  --lightYellow: #fdc500;
+  --lightRed: #e63946;
+  --lightBlue2: #bbdefb;
   --white2: #fffffc;
   --White: #ffffff;
   --black: #000000;
+  --cream: #fefae0;
 
   /* Fonts */
   --playFair: "Playfair Display", sans-serif;
@@ -16,7 +23,7 @@
 }
 
 body {
-  background-color: var(--White);
+  background-color: var(--blue);
 }
 
 header {
@@ -26,8 +33,7 @@ header {
   max-width: 100%;
   height: 70px;
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  border: 1px groove gray;
+  border: none;
 }
 
 header > img {
@@ -41,7 +47,7 @@ header > img {
   font-weight: 600;
   font-size: 2rem;
   text-wrap: wrap;
-  color: var(--black);
+  color: var(--White);
 }
 
 main {
@@ -51,7 +57,7 @@ main {
   align-items: center;
   justify-content: center;
   margin-top: 2px;
-  background-color: var(--White);
+  background-color: var(--lightBlue2);
 }
 
 .input-container {
@@ -70,11 +76,8 @@ main {
   height: 30px;
   border-radius: 20px;
   padding: 10px;
-  background-color: var(--White);
-  border: 1px groove gray;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  background-color: rgba(255, 255, 255, 0.842);
+  border: 1px solid rgba(170, 170, 170, 0.63);
   color: var(--black);
 }
 
@@ -116,7 +119,7 @@ select,
 .cart-btn {
   width: 40px;
   height: 30px;
-  background-color: var(--white2);
+  background-color: var(--lightBlue);
   border-radius: 10px;
   border: 1px groove gray;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
@@ -126,18 +129,17 @@ select,
 
 .cart-btn::after,
 .cart-btn:active {
-  background-color: var(--white2);
   transform: translateY(1px);
 }
 
 .category-filtering {
   border-radius: 10px;
   height: 29px;
-  background-color: var(--white2);
-  color: var(--black);
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+  background-color: var(--lightYellow);
+  color: var(--blueText);
+  /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
     rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; */
   border: 1px groove gray;
 }
 
@@ -146,7 +148,6 @@ select:focus {
 }
 
 .content-container {
-  border: 1px solid;
   width: 100%;
   max-width: 100%;
   display: flex;
@@ -163,7 +164,7 @@ select:focus {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--White);
+  background-color: var(--lightBlue2);
 }
 
 section {
@@ -171,14 +172,15 @@ section {
   max-width: 100%;
   font-size: 1rem;
   font-weight: 500;
-  border: 1px solid;
+  border: 1px groove var(--cream);
   height: 700px;
   padding: 10px;
   margin: 1px;
   border-radius: 3px;
-  background-color: var(--white2);
-  border: 1px groove gray;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: rgba(255, 245, 245, 0.733);
+  backdrop-filter: blur(20px);
+  border: none;
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
 section > h2 {
@@ -186,11 +188,10 @@ section > h2 {
   font-family: var(--inter);
   font-size: 20px;
   padding: 2px;
-  border-bottom: 1px solid gray;
+  text-decoration: underline;
 }
 
 .cart-container {
-  border: 1px solid;
   width: 500px;
   max-width: 100%;
   border-radius: 3px;
@@ -200,6 +201,8 @@ section > h2 {
   align-items: center;
   gap: 4px;
   position: relative;
+  background-color: rgba(255, 254, 254, 0.596);
+  border: 1px groove var(--cream);
   /* display: none; */
 }
 
@@ -208,7 +211,6 @@ section > h2 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid;
   width: 100%;
   max-width: 100%;
   padding: 5px;
@@ -216,6 +218,8 @@ section > h2 {
 
 .payment-btn {
   margin-left: 80px;
+  background-color: var(--lightRed)!important;
+  color: var(--cream)!important;
 }
 
 .aside-text-btn > button {
@@ -225,7 +229,9 @@ section > h2 {
   padding: 3px;
   border: 1px groove gray;
   font-family: var(--inter);
-  background-color: var(--White);
+  background-color: var(--lightYellow);
+  font-size: 0.7rem;
+  color: var(--blueText);
 }
 
 .aside-cart-text {
@@ -239,6 +245,7 @@ section > h2 {
   width: 380px;
   max-width: 100%;
   height: 656px;
+  padding: 10px;
 }
 
 .check-out-btn {
@@ -250,7 +257,9 @@ section > h2 {
   transform: translate(-150px, 328px);
   font-family: var(--inter);
   font-weight: 700;
-  background-color: var(--White);
+  font-size: 0.7rem;
+  color: var(--cream);
+  background-color: var(--lightRed);
 }
 
 .coupon-div-popup {
