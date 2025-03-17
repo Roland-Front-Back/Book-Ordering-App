@@ -211,7 +211,7 @@ section > h2 {
   position: relative;
   background-color: rgba(255, 254, 254, 0.596);
   border: 1px groove var(--cream);
-  /* display: none; */
+  display: none;
 }
 
 .aside-text-btn {
@@ -384,6 +384,21 @@ p > span {
   display: none;
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  display: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
 @media (max-width: 690px) {
   .input-container {
     display: flex;
@@ -391,14 +406,78 @@ p > span {
     align-items: center;
     justify-content: right;
   }
+
   .search-bar {
     width: 220px;
   }
-  .book-sections {
-    border: 1px solid;
-    width: 400px;
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
   }
+
+  .book-sections {
+    width: 100%;
+    max-width: 100%;
+    border: none;
+  }
+
   section {
-    width: 380px;
+    width: 95%;
+    max-width: 100%;
+  }
+
+  .cart-container {
+    width: 90%;
+    max-width: 350px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(247, 245, 245, 0.98);
+    z-index: 100;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  }
+
+  #cart-items {
+    width: 95%;
+    max-width: 100%;
+    height: 500px;
+    padding: 10px;
+    overflow-y: auto;
+  }
+
+  .aside-text-btn {
+    padding: 5px 10px;
+  }
+
+  .aside-cart-text {
+    font-size: 15px;
+  }
+
+  .check-out-btn {
+    position: relative;
+    transform: none;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .cart-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--lightRed);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    border: none;
   }
 }
