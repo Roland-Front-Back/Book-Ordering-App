@@ -201,26 +201,24 @@ section > h2 {
 }
 
 #book-card-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  border: 1px solid;
-  justify-content: space-around;
-  padding-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  border: 1px solid red;
+  grid-gap: 15px;
+  padding: 15px;
   overflow-y: auto;
+  max-width: 100%;
 }
 
 .book-card {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border: 1px groove rgb(194, 194, 194);
-  width: 160px;
   max-width: 100%;
   height: 170px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   text-align: center;
   padding: 2px;
@@ -236,11 +234,15 @@ section > h2 {
 .product-category {
   font-family: var(--inter);
   margin-bottom: 2px;
+  font-size: 0.9em;
+  font-weight: 600;
+  color: var(--blueText);
 }
 
 .book-price {
   margin: 50px 0 5px 0;
   font-family: var(--inter);
+  color: green;
 }
 
 .add-to-cart-btn {
@@ -330,6 +332,7 @@ section > h2 {
   max-width: 100%;
   height: 615px;
   padding: 10px;
+  overflow-y: auto;
 }
 
 .checkout-div {
@@ -502,7 +505,7 @@ p > span {
   overflow: hidden;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .input-container {
     display: flex;
     flex-direction: row;
@@ -566,7 +569,37 @@ p > span {
     justify-content: space-between;
     max-width: 100%;
   }
+
   .close-cart-btn {
     display: block;
+  }
+
+  #book-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .book-card {
+    width: 160px;
+    max-width: 100%;
+    height: 140px;
+    padding: 5px;
+    margin: 1px;
+  }
+
+  .book-card > h2 {
+    font-size: 10px;
+    font-family: var(--inter);
+  }
+
+  .product-category {
+    font-family: var(--inter);
+    font-size: 0.7em;
+  }
+
+  .book-price {
+    font-family: var(--inter);
+    color: green;
+    font-size: 0.7em;
   }
 }

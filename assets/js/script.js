@@ -19,16 +19,21 @@ const closeCartButton = document.getElementById("close-cart-btn");
 let isCartShowing = false;
 
 const products = [
-  { id: 1, name: "Roman Empire", price: 29.99, category: "History" },
-  { id: 2, name: "Book of Science", price: 19.99, category: "Education" },
-  { id: 3, name: "Story of Us", price: 11.29, category: "Fiction" },
-  { id: 4, name: "Rules for Life", price: 15.99, category: "Non-fiction" },
-  { id: 5, name: "Elon Musk", price: 15.0, category: "Biography" },
-  { id: 6, name: "Roland Amoguis", price: 1.0, category: "Biography" },
-  { id: 7, name: "Philosophy", price: 12.22, category: "Education" },
-  { id: 8, name: "Romeo and Juliet", price: 21.00, category: "Fiction" },
-  { id: 9, name: "James Carter", price: 115.33, category: "Fiction" },
-  { id: 10, name: "Star Wars", price: 20.21, category: "Fiction" },
+    { id: 1, name: "The Rise of Rome", price: 25.99, category: "History" },
+    { id: 2, name: "Modern Physics", price: 18.50, category: "Education" },
+    { id: 3, name: "Mystic River", price: 13.75, category: "Fiction" },
+    { id: 4, name: "Thinking, Fast and Slow", price: 16.89, category: "Non-fiction" },
+    { id: 5, name: "Steve Jobs", price: 22.49, category: "Biography" },
+    { id: 6, name: "Ancient Civilizations", price: 30.00, category: "History" },
+    { id: 7, name: "Mathematics for Dummies", price: 10.99, category: "Education" },
+    { id: 8, name: "The Last Kingdom", price: 14.55, category: "Fiction" },
+    { id: 9, name: "The Art of War", price: 19.99, category: "Non-fiction" },
+    { id: 10, name: "Leonardo da Vinci", price: 27.99, category: "Biography" },
+    { id: 11, name: "Napoleon Bonaparte", price: 20.75, category: "History" },
+    { id: 12, name: "Chemistry Essentials", price: 14.20, category: "Education" },
+    { id: 13, name: "Harry Potter", price: 25.00, category: "Fiction" },
+    { id: 14, name: "Atomic Habits", price: 21.90, category: "Non-fiction" },
+    { id: 15, name: "The Wright Brothers", price: 17.85, category: "Biography" },   
 ];
 
 // destructure the object properties in the array
@@ -145,3 +150,6 @@ closeCartButton.addEventListener("click", () => {
 });
 
 clearCartButton.addEventListener("click", cart.clearCart.bind(cart));
+
+
+//TO-DO: Fix cart items display
