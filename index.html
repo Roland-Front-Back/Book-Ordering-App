@@ -28,7 +28,6 @@
       <img
         src="assets/img/lightlogo.png"
         alt="A pile of books"
-        type="png"
         aria-label="Book image"
       />
       <h1 class="title">Book Ordering App</h1>
@@ -72,7 +71,7 @@
         <div class="book-sections">
           <section id="all-categories" data-category="all">
             <h2>All categories</h2>
-            <div class="products-container"></div>
+            <div id="book-card-container"></div>
           </section>
         </div>
 
@@ -88,14 +87,14 @@
           </div>
 
           <!-- Cart Items -->
-          <div id="cart-items"></div>
+          <div id="products-container"></div>
 
           <!-- Coupon Code Input -->
           <div class="coupon-div-popup">
             <label for="coupon">Apply Coupon</label>
             <input
               type="text"
-              id="coupon"
+              id="input-coupon"
               class="coupon"
               placeholder="Enter code"
             />
@@ -111,7 +110,10 @@
           </div>
 
           <!-- Check-out btn -->
-          <button id="check-out" class="check-out-btn">Checkout</button>
+          <div class="checkout-div">
+            <button id="check-out" class="check-out-btn">Checkout</button>
+            <button id="close-cart-btn" class="close-cart-btn">Close</button>
+          </div>
         </aside>
       </div>
       <div class="overlay"></div>
