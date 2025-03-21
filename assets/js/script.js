@@ -2,14 +2,10 @@ const searchBar = document.getElementById("search-bar");
 const categoryFiltering = document.getElementById("category-filtering");
 const bookCards = document.getElementById("book-card-container");
 const cartButton = document.getElementById("cart-btn");
-const paymentButton = document.getElementById("payment-btn");
-const couponButtn = document.getElementById("coupon-btn");
 const clearCartButton = document.getElementById("clear-cart-btn");
 const productsContainer = document.getElementById("products-container");
-const inputCoupon = document.getElementById("input-coupon");
-const applyCoupon = document.getElementById("apply-coupon");
 const totalNumberOfItems = document.getElementById("total-items");
-const cartSubtotal = document.getElementById("subtotal");
+const cartSubTotal = document.getElementById("subtotal");
 const cartTaxes = document.getElementById("taxes");
 const cartTotal = document.getElementById("total");
 const checkoutButton = document.getElementById("check-out");
@@ -17,23 +13,34 @@ const cartContainer = document.getElementById("cart-container");
 const closeCartButton = document.getElementById("close-cart-btn");
 
 let isCartShowing = false;
+let isCouponShowing = false;
 
 const products = [
-    { id: 1, name: "The Rise of Rome", price: 25.99, category: "History" },
-    { id: 2, name: "Modern Physics", price: 18.50, category: "Education" },
-    { id: 3, name: "Mystic River", price: 13.75, category: "Fiction" },
-    { id: 4, name: "Thinking, Fast and Slow", price: 16.89, category: "Non-fiction" },
-    { id: 5, name: "Steve Jobs", price: 22.49, category: "Biography" },
-    { id: 6, name: "Ancient Civilizations", price: 30.00, category: "History" },
-    { id: 7, name: "Mathematics for Dummies", price: 10.99, category: "Education" },
-    { id: 8, name: "The Last Kingdom", price: 14.55, category: "Fiction" },
-    { id: 9, name: "The Art of War", price: 19.99, category: "Non-fiction" },
-    { id: 10, name: "Leonardo da Vinci", price: 27.99, category: "Biography" },
-    { id: 11, name: "Napoleon Bonaparte", price: 20.75, category: "History" },
-    { id: 12, name: "Chemistry Essentials", price: 14.20, category: "Education" },
-    { id: 13, name: "Harry Potter", price: 25.00, category: "Fiction" },
-    { id: 14, name: "Atomic Habits", price: 21.90, category: "Non-fiction" },
-    { id: 15, name: "The Wright Brothers", price: 17.85, category: "Biography" },   
+  { id: 1, name: "The Rise of Rome", price: 25.99, category: "History" },
+  { id: 2, name: "Modern Physics", price: 18.5, category: "Education" },
+  { id: 3, name: "Mystic River", price: 13.75, category: "Fiction" },
+  {
+    id: 4,
+    name: "Thinking, Fast and Slow",
+    price: 16.89,
+    category: "Non-fiction",
+  },
+  { id: 5, name: "Steve Jobs", price: 22.49, category: "Biography" },
+  { id: 6, name: "Ancient Civilizations", price: 30.0, category: "History" },
+  {
+    id: 7,
+    name: "Mathematics for Dummies",
+    price: 10.99,
+    category: "Education",
+  },
+  { id: 8, name: "The Last Kingdom", price: 14.55, category: "Fiction" },
+  { id: 9, name: "The Art of War", price: 19.99, category: "Non-fiction" },
+  { id: 10, name: "Leonardo da Vinci", price: 27.99, category: "Biography" },
+  { id: 11, name: "Napoleon Bonaparte", price: 20.75, category: "History" },
+  { id: 12, name: "Chemistry Essentials", price: 14.2, category: "Education" },
+  { id: 13, name: "Harry Potter", price: 25.0, category: "Fiction" },
+  { id: 14, name: "Atomic Habits", price: 21.9, category: "Non-fiction" },
+  { id: 15, name: "The Wright Brothers", price: 17.85, category: "Biography" },
 ];
 
 // destructure the object properties in the array
@@ -72,11 +79,11 @@ class ShoppingCart {
     currentProductCount > 1
       ? (currentProductCountSpan.textContent = `${currentProductCount}x`)
       : (productsContainer.innerHTML += `<div class="product" id="book${id}">
+      <p class="p-name">${name}</p>
+      <p class="p-price">$${price}</p>
       <p>
-      <span class="product-count" id="product-count-for-id${id}"></spa>
-      ${name}
+       <span class="product-count" id="product-count-for-id${id}"></span>
       </p>
-      <p>$${price}</p>
       </div>`);
   }
 
@@ -152,4 +159,7 @@ closeCartButton.addEventListener("click", () => {
 clearCartButton.addEventListener("click", cart.clearCart.bind(cart));
 
 
-//TO-DO: Fix cart items display
+//TO-DO: make the select categories functional
+// TO-DO: make the search bar functional
+// TO-DO: make the discount functional
+// TO-DO: make the app dark mode or light mode vice versa

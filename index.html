@@ -79,8 +79,6 @@
         <aside class="cart-container" id="cart-container">
           <div class="aside-text-btn">
             <h2 class="aside-cart-text">Your Cart</h2>
-            <button class="payment-btn" id="payment-btn">Payment</button>
-            <button class="coupon-btn" id="coupon-btn">Coupon</button>
             <button class="clear-cart-btn" id="clear-cart-btn">
               Clear Cart
             </button>
@@ -89,24 +87,27 @@
           <!-- Cart Items -->
           <div id="products-container"></div>
 
-          <!-- Coupon Code Input -->
-          <div class="coupon-div-popup">
-            <label for="coupon">Apply Coupon</label>
-            <input
-              type="text"
-              id="input-coupon"
-              class="coupon"
-              placeholder="Enter code"
-            />
-            <button id="apply-coupon">Apply</button>
-          </div>
-
           <!-- Order Summary -->
-          <div class="order-summary-popup">
-            <p>Total number of items: <span id="total-items">0</span></p>
-            <p>Subtotal: <span id="subtotal">$0</span></p>
-            <p>Taxes: <span id="taxes">$0</span></p>
-            <p>Total: <span id="total">$0</span></p>
+          <div class="order-summary" id="order-summary">
+            <div class="order-info" id="order-info">
+              <p>Total items: <span id="total-items">0</span></p>
+              <p>Subtotal: <span id="subtotal">$0</span></p>
+              <p>Taxes: <span id="taxes">$0</span></p>
+              <p>Total: <span id="total">$0</span></p>
+            </div>
+
+            <div class="coupon-div">
+              <select
+                name="coupon-select"
+                class="coupon-select"
+                id="coupon-select"
+              >
+                <option value="">Use Coupon</option>
+                <option value="1">5% discount</option>
+                <option value="2">20% discount</option>
+                <option value="3">100% discount</option>
+              </select>
+            </div>
           </div>
 
           <!-- Check-out btn -->

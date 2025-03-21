@@ -126,9 +126,9 @@ select,
     rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
-select::after,
-select:active,
-select:hover {
+.category-filtering::after,
+.category-filtering:active,
+.category-filtering:hover {
   background-color: var(--cream);
   color: var(--blueText);
 }
@@ -203,7 +203,6 @@ section > h2 {
 #book-card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  border: 1px solid red;
   grid-gap: 15px;
   padding: 15px;
   overflow-y: auto;
@@ -290,17 +289,8 @@ section > h2 {
   padding: 5px;
 }
 
-.payment-btn {
+.coupon-btn {
   margin-left: 80px;
-  background-color: var(--lightRed) !important;
-  color: var(--cream) !important;
-}
-
-.payment-btn::after,
-.payment-btn:active,
-.payment-btn:hover {
-  background-color: var(--cream) !important;
-  color: var(--blueText) !important;
 }
 
 .aside-text-btn > button {
@@ -330,7 +320,7 @@ section > h2 {
 #products-container {
   width: 100%;
   max-width: 100%;
-  height: 615px;
+  height: 510px;
   padding: 10px;
   overflow-y: auto;
 }
@@ -385,109 +375,107 @@ section > h2 {
   border: 2px solid gray;
 }
 
-.coupon-div-popup {
-  border: 1px solid gray;
-  height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 100%;
-  width: 200px;
-  height: 120px;
-  gap: 6px;
-  border-radius: 20px;
-  padding: 10px;
-}
-
-.coupon {
-  width: 130px;
-  height: 30px;
-  border-radius: 5px;
-  padding: 3px;
-  text-align: center;
-  border: 1px groove gray;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}
-
-.coupon[type="text"]:focus {
-  outline: var(--white2);
-}
-
-.coupon::placeholder {
-  color: var(--black);
-}
-
-#apply-coupon {
-  width: 60px;
-  height: 25px;
-  border-radius: 10px;
-  border: 1px groove gray;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
-}
-
 label {
   font-family: var(--inter);
   font-size: 1rem;
   font-weight: 500;
+  color: var(--black);
 }
 
-.order-summary-popup {
+.order-summary {
   display: flex;
-  flex-direction: column;
-  text-align: left;
-  justify-content: flex-start;
-  width: 180px;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
   max-width: 100%;
-  height: 100px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  gap: 5px;
-  padding: 10px;
+  border-top: 1px groove var(--blueText);
+  height: 80px;
+  margin: 1px;
+  padding: 5px;
 }
 
-.order-summary-popup,
-p > span {
+.order-info {
+  width: 50%;
+}
+
+.order-info>
+p {
   font-family: var(--inter);
-  font-size: 0.8rem;
+  font-size: 12px;
+  color: var(--black);
+  margin: 1px;
 }
 
-.order-summary-popup {
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--white2);
-  box-shadow: 0px 4px 10px rgba(0, 2, 2, 0.2);
-  z-index: 100;
-  display: none;
+.order-info, p > span {
+  color: green;
 }
 
-.coupon-div-popup {
-  position: absolute;
-  top: 16%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--white2);
-  box-shadow: 0px 4px 10px rgba(0, 2, 2, 0.2);
-  z-index: 100;
+#total-items {
+  color: var(--blue);
+}
+
+#total {
+  color: var(--lightRed);
+}
+
+.coupon-div {
+  width: 50%;
+  max-width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
+.coupon-select {
+  width: 70%;
+  height: 25px;
+  border-radius: 5px;
+  padding: 2px;
+  background-color: var(--White);
+  font-family: var(--inter);
+  color: var(--lightRed);
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.coupon-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.coupon-select::-ms-expand {
   display: none;
 }
 
 .product {
   display: flex;
   flex-direction: row;
-  height: 55px;
+  height: 75px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 10px;
-  border-radius: 3px;
+  border-radius: 5px;
   background-color: rgba(243, 243, 243, 0.842);
   border: 1px groove rgba(209, 209, 209, 0.945);
+  margin-bottom: 10px;
+  padding: 2px;
+}
+
+.p-name {
+  font-family: var(--inter);
+  font-weight: 600;
+  font-size: 0.8em;
+}
+
+.p-price {
+  color: green;
+  font-family: var(--inter);
+  font-weight: 400;
+}
+
+.product-count {
+  color: var(--lightRed);
+  font-family: var(--inter);
+  font-size: 0.8em;
 }
 
 .overlay {
