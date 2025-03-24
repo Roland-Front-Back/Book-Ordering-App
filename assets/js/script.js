@@ -1,6 +1,6 @@
-const searchBar = document.getElementById("search-bar");
-const categoryFiltering = document.getElementById("category-filtering");
-const bookCards = document.getElementById("book-card-container");
+const searchBarInput = document.getElementById("search-bar");
+const categoryFilter = document.getElementById("category-filtering");
+const bookCardContainer = document.getElementById("book-card-container");
 const cartButton = document.getElementById("cart-btn");
 const clearCartButton = document.getElementById("clear-cart-btn");
 const productsContainer = document.getElementById("products-container");
@@ -13,7 +13,6 @@ const cartContainer = document.getElementById("cart-container");
 const closeCartButton = document.getElementById("close-cart-btn");
 
 let isCartShowing = false;
-let isCouponShowing = false;
 
 const products = [
   { id: 1, name: "The Rise of Rome", price: 25.99, category: "History" },
@@ -45,7 +44,7 @@ const products = [
 
 // destructure the object properties in the array
 products.forEach(({ name, id, price, category }) => {
-  bookCards.innerHTML += `
+  bookCardContainer.innerHTML += `
   <div class="book-card">
   <h2>${name}</h2>
   <p class="book-price">$${price}</p>
@@ -158,8 +157,222 @@ closeCartButton.addEventListener("click", () => {
 
 clearCartButton.addEventListener("click", cart.clearCart.bind(cart));
 
+const bookSections = document.querySelector(".book-sections");
 
-//TO-DO: make the select categories functional
-// TO-DO: make the search bar functional
-// TO-DO: make the discount functional
+// Handles search bar filtering products
+searchBarInput.addEventListener("input", (e) => {
+  const inputValue = e.target.value.toLowerCase();
+
+  const bookCardElements = document.querySelectorAll(".book-card");
+
+  products.forEach((book, index) => {
+    const isVisible =
+      book.name.toLowerCase().includes(inputValue) ||
+      book.category.toLowerCase().includes(inputValue);
+
+    bookCardElements[index].classList.toggle("hide", !isVisible);
+  });
+});
+
+// Handles select-filtering categories
+categoryFilter.addEventListener("change", function () {
+  const selectedCategory = this.value;
+  bookCardContainer.innerHTML = ""; // clears the current book container
+
+  // Filter and display book based on category
+  if (selectedCategory === "all-categories") {
+    products.forEach(({ name, id, price, category }) => {
+      bookCardContainer.innerHTML += `
+    <div class="book-card">
+    <h2>${name}</h2>
+    <p class="book-price">$${price}</p>
+    <p class="product-category">${category}</p>
+    <button id="${id}" class="add-to-cart-btn">Add to cart</button>
+    </div>`;
+    });
+  } else {
+    // Filter by category
+    const filteredProducts = products.filter(
+      (product) =>
+        product.category.toLowerCase() === selectedCategory.toLowerCase()
+    );
+
+    filteredProducts.forEach(({ name, id, price, category }) => {
+      bookCardContainer.innerHTML += `
+    <div class="book-card">
+    <h2>${name}</h2>
+    <p class="book-price">$${price}</p>
+    <p class="product-category">${category}</p>
+    <button id="${id}" class="add-to-cart-btn">Add to cart</button>
+    </div>`;
+    });
+  }
+
+  // Update section heading
+  updateSectionHeading(selectedCategory);
+
+  // reattach event listeners to the new add-to-cart btns
+  attachAddToCartListener();
+});
+
+// Updates the section heading based on selected category
+const updateSectionHeading = (category) => {
+  let headingText = "All Categories";
+
+  if (category !== "all-categories") {
+    headingText = category.charAt(0).toUpperCase() + category.slice(1);
+  }
+
+  // Find the section element or create
+  let sectionElement = document.querySelector(
+    `section[data-category="${category}"]`
+  );
+
+  if (!sectionElement) {
+    bookSections.innerHTML = "";
+
+    // Create new section for this category
+    sectionElement = document.createElement("section");
+    sectionElement.id = category;
+    sectionElement.setAttribute("data-category", category);
+
+    const heading = document.createElement("h2");
+    heading.textContent = headingText;
+
+    sectionElement.appendChild(heading);
+    sectionElement.appendChild(bookCardContainer);
+    bookSections.appendChild(sectionElement);
+  }
+};
+
+// handles reattach event listener to add-to-cat-btn
+const attachAddToCartListener = () => {
+  const addToCardBtns = document.getElementsByClassName("add-to-cart-btn");
+
+  [...addToCartBtns].forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      cart.addItem(Number(e.target.id), products);
+      totalNumberOfItems.textContent = cart.getCounts();
+      cart.calculateTotal();
+    });
+  });
+};
+
+// Initialize the page with all books
+window.addEventListener("DOMContentLoaded", () => {
+  // Trigger the change event to lead all books initially
+  categoryFilter.dispatchEvent(new Event("change"));
+});
+
+const couponSelect = document.getElementById("coupon-select");
+
+// Add event listener for the coupon selection
+couponSelect.addEventListener("change", function () {
+  const selectedCoupon = this.value;
+  applyDiscount(selectedCoupon);
+});
+
+// Function to apply discount based on select coupon
+const applyDiscount = (couponValue) => {
+  let discountPercentage = 0;
+
+  // Determine discount percentage based on counpon value
+  switch (couponValue) {
+    case "1":
+      discountPercentage = 5;
+      break;
+    case "2":
+      discountPercentage = 20;
+      break;
+    case "3":
+      discountPercentage = 100;
+      break;
+    default:
+      discountPercentage = 0;
+  }
+
+  // Recalculate the total with discount
+  if (discountPercentage > 0) {
+    // get the current subtotal
+    const subTotalText = cartSubTotal.textContent;
+    const subTotal = parseFloat(subTotalText.replace("$", ""));
+
+    // calculate discount amount
+    const discountAmount = (discountPercentage / 100) * subTotal;
+    const discountSubTotal = subTotal - discountAmount;
+
+    // calculate tax on the discounted subtotal
+    const tax = cart.calculateTaxes(discountSubTotal);
+
+    // update the total
+    const newTotal = discountSubTotal + tax;
+
+    // Update display with discount
+    cartSubTotal.textContent = `$${discountSubTotal.toFixed(2)}`;
+    cartTaxes.textContent = `$${tax.toFixed(2)}`;
+    cartTotal.textContent = `$${newTotal.toFixed(2)}`;
+
+    // Add discount info. if not already exist
+    let discountInfoElement = document.getElementById("discount-info");
+    if (!discountInfoElement) {
+      discountInfoElement = document.createElement("div");
+      discountInfoElement.id = "discount-info";
+
+      // insert it before the total
+      cartTotal.parentNode.insertBefore(
+        discountInfoElement,
+        cartTotal
+      );
+    }
+    discountInfoElement.textContent = `Discount (${discountPercentage}%): -$${discountAmount.toFixed(
+      2
+    )}`;
+  } else {
+    // if no discount, revert to original
+    cart.calculateTotal();
+
+    // Remove discount info it it exist
+    const discountInfoElement = document.getElementById("discount-info");
+    if (discountInfoElement) {
+      discountInfoElement.remove();
+    }
+  }
+};
+
+// Modify the carts calculatetotal method to heck for acive discount
+const originalCalculateTotal = cart.calculateTotal;
+cart.calculateTotal = function () {
+  // Calls the original method first
+  originalCalculateTotal.call(this);
+
+  // check if a discount is already use
+  const selectedCoupon = couponSelect.value;
+  if (selectedCoupon !== "") {
+    // Re-apply the discount
+    applyDiscount(selectedCoupon);
+  }
+
+  return this.total;
+};
+
+const originalClearCart = cart.clearCart;
+cart.clearCart = function () {
+  const result = originalClearCart.call(this);
+  couponSelect.value = ""; //Reset coupon selection
+
+  // Remove discount info if it exist
+  const discountInfoElement = document.getElementById("discount-info");
+  if (discountInfoElement) {
+    discountInfoElement.remove();
+  }
+
+  return result;
+};
+
+const themeToggle = document.getElementById("theme-toggle");
+
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+})
+
 // TO-DO: make the app dark mode or light mode vice versa

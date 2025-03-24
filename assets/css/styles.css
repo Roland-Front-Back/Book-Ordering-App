@@ -26,6 +26,11 @@ body {
   background-color: var(--blue);
 }
 
+body.dark-mode {
+  background-color: #121212;
+  color:var(--White);
+}
+
 header {
   display: flex;
   flex-direction: row;
@@ -476,6 +481,13 @@ p {
   color: var(--lightRed);
   font-family: var(--inter);
   font-size: 0.8em;
+}
+
+#discount-info {
+  color: orangered;
+  background: none;
+  border: none;
+  position: absolute;
 }
 
 .overlay {
