@@ -552,8 +552,8 @@ body.dark-mode input::placeholder {
 }
 
 body.dark-mode .cart-container {
-  background-color: rgba(30, 30, 30, 0.9);
-  border-color: rgba(100, 100, 100, 0.5);
+  background-color: rgb(30, 30, 30);
+  border-color: rgb(100, 100, 100);
 }
 
 body.dark-mode .product {
@@ -578,14 +578,10 @@ body.dark-mode .order-summary {
 }
 
 .theme-toggle {
-  position: fixed;
-  top: 10px;
-  right: 10px;
   background: none;
   border: none;
   cursor: pointer;
   color: var(--White);
-  z-index: 1000;
 }
 
 .theme-toggle svg {
