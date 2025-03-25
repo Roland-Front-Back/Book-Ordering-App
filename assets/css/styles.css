@@ -581,7 +581,7 @@ body.dark-mode .order-summary {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--White);
+  color: var(--black);
 }
 
 .theme-toggle svg {
