@@ -37,8 +37,8 @@
       <div class="input-container">
         <i class="fa-solid fa-magnifying-glass" style="color: #000000"></i>
         <input
-          type="text"
-          name="text"
+          type="search"
+          name="search"
           class="search-bar"
           id="search-bar"
           placeholder="Find item here..."
@@ -64,14 +64,14 @@
         <button id="cart-btn" type="button" class="cart-btn">
           <i class="fa-sharp fa-solid fa-cart-shopping"></i>
         </button>
-        <button id="theme-toggle">Toggle Dark Mode</button>
+        <button id="theme-toggle" class="theme-toggle"><svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-moon"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg></button>
       </div>
 
       <!-- Book List -->
       <div class="content-container">
         <div class="book-sections">
           <section id="all-categories" data-category="all">
-            <h2>All categories</h2>
+            <h2 class="filter-text">All categories</h2>
             <div id="book-card-container"></div>
           </section>
         </div>
@@ -121,5 +121,6 @@
       <div class="overlay"></div>
     </main>
     <script src="assets/js/script.js"></script>
+    <script src="dark-mode.js"></script>
   </body>
 </html>

@@ -157,22 +157,28 @@ closeCartButton.addEventListener("click", () => {
 
 clearCartButton.addEventListener("click", cart.clearCart.bind(cart));
 
-const bookSections = document.querySelector(".book-sections");
-
 // Handles search bar filtering products
 searchBarInput.addEventListener("input", (e) => {
   const inputValue = e.target.value.toLowerCase();
 
   const bookCardElements = document.querySelectorAll(".book-card");
 
-  products.forEach((book, index) => {
-    const isVisible =
-      book.name.toLowerCase().includes(inputValue) ||
-      book.category.toLowerCase().includes(inputValue);
+  // Loop through book card ele instead of product array
+  bookCardElements.forEach((bookCard) => {
+    // get name and category from the book card
+    const bookName = bookCard.querySelector("h2").textContent.toLowerCase();
+    const bookCategory = bookCard
+      .querySelector(".product-category")
+      .textContent.toLowerCase();
 
-    bookCardElements[index].classList.toggle("hide", !isVisible);
+    const isVisible =
+      bookName.includes(inputValue) || bookCategory.includes(inputValue);
+
+    bookCard.classList.toggle("hide", !isVisible);
   });
 });
+
+const bookSections = document.querySelector(".book-sections");
 
 // Handles select-filtering categories
 categoryFilter.addEventListener("change", function () {
@@ -319,10 +325,7 @@ const applyDiscount = (couponValue) => {
       discountInfoElement.id = "discount-info";
 
       // insert it before the total
-      cartTotal.parentNode.insertBefore(
-        discountInfoElement,
-        cartTotal
-      );
+      cartTotal.parentNode.insertBefore(discountInfoElement, cartTotal);
     }
     discountInfoElement.textContent = `Discount (${discountPercentage}%): -$${discountAmount.toFixed(
       2
@@ -373,6 +376,6 @@ const themeToggle = document.getElementById("theme-toggle");
 
 themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
-})
+});
 
 // TO-DO: make the app dark mode or light mode vice versa
