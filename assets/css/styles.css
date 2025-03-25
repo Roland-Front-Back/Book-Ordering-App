@@ -593,7 +593,7 @@ body.dark-mode .theme-toggle {
   color: var(--lightYellow);
 }
 
-@media (max-width: 690px) {
+@media (max-width: 500px) {
   .input-container {
     display: flex;
     flex-direction: row;
