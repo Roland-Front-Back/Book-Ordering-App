@@ -378,4 +378,5 @@ themeToggle.addEventListener("click", () => {
   document.body.classList.toggle("dark-mode");
 });
 
-// TO-DO: make the app dark mode or light mode vice versa
+// TO-DO: Fix this shit code in the future 
+// A basic ADD-TO-CART web 
